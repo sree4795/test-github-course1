@@ -4,6 +4,7 @@ on:
         branches: 
             - main
             - dev
+    workflow_dispatch:        
 jobs:
     testing:
         name: needs to trigger when pushed to main branch
