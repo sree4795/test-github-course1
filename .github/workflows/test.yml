@@ -1,10 +1,25 @@
 name: testing
 on: 
     push:
-        branches: main
+        branches: 
+            - main
+            - dev
 jobs:
     testing:
+        name: needs to trigger when pushed to main branch
+        if: github.action_ref == 'refs/head/main'
         runs-on: ubuntu-latest
         steps:
-            - name: testing
-              run: echo "testing"
+            - name: get-code
+              uses: actions/checkout@v3
+            - name: test
+              run: npm ci
+    lint:
+        name: this will triggers when pushed to dev branch
+        if: github.action_ref == 'refs/head/dev'
+        runs-on: ubuntu-latest
+        steps:
+            - name: get-code
+              uses: actions/checkout@v3
+            - name: test
+              run: npm run test           
