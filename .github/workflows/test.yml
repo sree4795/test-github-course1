@@ -7,7 +7,7 @@ on:
 jobs:
     testing:
         name: needs to trigger when pushed to main branch
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         steps:
             - name: get-code
@@ -16,7 +16,7 @@ jobs:
               run: npm ci
     lint:
         name: this will triggers when pushed to dev branch
-        if: github.ref == 'refs/head/dev'
+        if: github.ref == 'refs/heads/dev'
         runs-on: ubuntu-latest
         steps:
             - name: get-code
